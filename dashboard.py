@@ -12,7 +12,7 @@ def load_data():
 df = load_data()
 
 # Judul dashboard
-st.title("📊 HR Dashboard Perusahaan")
+st.title("📊 HR Dashboard Perusahaan PyA")
 
 # Filter
 st.sidebar.header("🔍 Filter Data")

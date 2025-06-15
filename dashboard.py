@@ -28,9 +28,9 @@ col4.metric("Rata-rata Salary", f"${df['Annual Salary (USD)'].mean():,.2f}")
 col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
 
 # Bar chart: jumlah karyawan per department
-st.subheader("🔹 Jumlah Karyawan per Department")
-dept_count = df["Department"].value_counts()
-st.bar_chart(dept_count)
+st.subheader("🔹 Jumlah Karyawan per Jabatan")
+designation_count = df["Designation"].value_counts()
+st.bar_chart(designation_count)
 
 # Bar chart: rata-rata salary per department
 st.subheader("🔹 Rata-rata Salary per Department")

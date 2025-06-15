@@ -39,7 +39,10 @@ st.bar_chart(avg_salary_dept)
 
 # Bar chart: jumlah karyawan per jabatan
 st.subheader("🔹 Jumlah Karyawan per Jabatan")
-designation_count = df["Designation"].value_counts()
+designation_count = df["Designation"].value_counts().reset_index()
+designation_count.columns = ["Designation", "Jumlah Karyawan"]
+designation_count = designation_count.set_index("Designation")
+
 st.bar_chart(designation_count)
 
 # Pie chart: distribusi karyawan per department

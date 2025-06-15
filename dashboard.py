@@ -72,14 +72,17 @@ df_hire["Bulan"] = df_hire["Hire Date"].dt.to_period("M").astype(str)
 hire_per_bulan = df_hire.groupby("Bulan").size()
 st.line_chart(hire_per_bulan)
 
-st.subheader("🔹 Scatter Plot: Salary vs Hire Date")
-fig2, ax2 = plt.subplots(figsize=(10, 5))  # kasih ukuran biar lega
-ax2.scatter(filtered_df["Hire Date"], filtered_df["Annual Salary (USD)"], alpha=0.7, color="teal", edgecolors="k")
-ax2.set_xlabel("Hire Date")
-ax2.set_ylabel("Annual Salary (USD)")
-ax2.set_title("Salary vs Hire Date")
-fig2.autofmt_xdate()  # format tanggal biar miring dan terbaca
-st.pyplot(fig2)
+st.subheader("🔹 Rata-rata Salary per Bulan Hire Date")
+
+# Bikin kolom bulan
+filtered_df["Bulan Hire"] = filtered_df["Hire Date"].dt.to_period("M").astype(str)
+
+# Hitung rata-rata salary per bulan
+avg_salary_bulan = filtered_df.groupby("Bulan Hire")["Annual Salary (USD)"].mean().sort_index()
+
+# Tampilkan line chart
+st.line_chart(avg_salary_bulan)
+
 
 st.subheader("🔹 Boxplot: Distribusi Salary per Department")
 fig3, ax3 = plt.subplots(figsize=(12, 6))  # lebih lebar

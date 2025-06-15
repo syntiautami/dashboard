@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Load data
 @st.cache_data
@@ -78,10 +79,13 @@ st.bar_chart(avg_salary_dept)
 # Pie chart: distribusi karyawan per department
 st.subheader("🔹 Distribusi Karyawan per Department")
 if not dept_count.empty:
-    fig1, ax1 = plt.subplots()
-    ax1.pie(dept_count, labels=dept_count.index, autopct='%1.1f%%', startangle=90)
-    ax1.axis('equal')
-    st.pyplot(fig1)
+    pie_fig = px.pie(
+        names=dept_count.index,
+        values=dept_count.values,
+        title="Distribusi Karyawan per Department",
+        hole=0.3  # opsional, untuk donut chart
+    )
+    st.plotly_chart(pie_fig)
 else:
     st.write("Tidak ada data untuk pie chart.")
 

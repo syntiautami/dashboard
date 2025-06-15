@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import LabelEncoder
 
 # Load data
 @st.cache_data
@@ -13,112 +10,51 @@ def load_data():
 
 df = load_data()
 
-# Judul dashboard
-st.title("📊 Data Quintal Tahun 2022")
-
-# Sidebar filter
+# Filter (opsional bisa dihilangkan kalau mau full data)
 st.sidebar.header("🔍 Filter Data")
-departments = st.sidebar.multiselect(
-    "Pilih Department", options=df["Department"].unique(), default=df["Department"].unique())
-designations = st.sidebar.multiselect(
-    "Pilih Designation", options=df["Designation"].unique(), default=df["Designation"].unique())
-hire_date = st.sidebar.date_input(
-    "Pilih Rentang Hire Date", 
-    [df["Hire Date"].min(), df["Hire Date"].max()]
-)
-salary_range = st.sidebar.slider(
-    "Rentang Salary (USD)",
-    int(df["Annual Salary (USD)"].min()),
-    int(df["Annual Salary (USD)"].max()),
-    (int(df["Annual Salary (USD)"].min()), int(df["Annual Salary (USD)"].max()))
-)
+departments = st.sidebar.multiselect("Pilih Department", options=df["Department"].unique(), default=df["Department"].unique())
+df = df[df["Department"].isin(departments)]
 
-# Filter data
-filtered_df = df[
-    (df["Department"].isin(departments)) &
-    (df["Designation"].isin(designations)) &
-    (df["Hire Date"] >= pd.to_datetime(hire_date[0])) &
-    (df["Hire Date"] <= pd.to_datetime(hire_date[1])) &
-    (df["Annual Salary (USD)"] >= salary_range[0]) &
-    (df["Annual Salary (USD)"] <= salary_range[1])
-]
+# Scorecard
+st.title("📊 HR Dashboard")
 
-# Tampilkan data
-st.subheader("📋 Data Karyawan (Setelah Filter)")
-st.dataframe(filtered_df)
+col1, col2, col3 = st.columns(3)
+col1.metric("Total Karyawan", f"{df.shape[0]}")
+col2.metric("Jumlah Department", f"{df['Department'].nunique()}")
+col3.metric("Total Salary", f"${df['Annual Salary (USD)'].sum():,.0f}")
 
-# Statistik
-st.subheader("📈 Statistik")
-st.write(f"Total Karyawan: {filtered_df.shape[0]}")
-st.write(f"Rata-rata Gaji: ${filtered_df['Annual Salary (USD)'].mean():,.2f}")
-st.write(f"Gaji Tertinggi: ${filtered_df['Annual Salary (USD)'].max():,.2f}")
-st.write(f"Gaji Terendah: ${filtered_df['Annual Salary (USD)'].min():,.2f}")
+col4, col5 = st.columns(2)
+col4.metric("Rata-rata Salary", f"${df['Annual Salary (USD)'].mean():,.2f}")
+col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
 
-# Berbagai visualisasi
-
-st.subheader("🔹 Bar Chart: Jumlah Karyawan per Department")
-dept_count = filtered_df["Department"].value_counts()
+# Bar chart: jumlah karyawan per department
+st.subheader("🔹 Jumlah Karyawan per Department")
+dept_count = df["Department"].value_counts()
 st.bar_chart(dept_count)
 
-st.subheader("🔹 Pie Chart: Proporsi Karyawan per Department")
+# Bar chart: rata-rata salary per department
+st.subheader("🔹 Rata-rata Salary per Department")
+avg_salary_dept = df.groupby("Department")["Annual Salary (USD)"].mean()
+st.bar_chart(avg_salary_dept)
+
+# Bar chart: jumlah karyawan per jabatan
+st.subheader("🔹 Jumlah Karyawan per Jabatan")
+designation_count = df["Designation"].value_counts()
+st.bar_chart(designation_count)
+
+# Pie chart: distribusi karyawan per department
+st.subheader("🔹 Distribusi Karyawan per Department")
 fig1, ax1 = plt.subplots()
 ax1.pie(dept_count, labels=dept_count.index, autopct='%1.1f%%', startangle=90)
 ax1.axis('equal')
 st.pyplot(fig1)
 
-st.subheader("🔹 Line Chart: Jumlah Hire per Bulan")
-df_hire = filtered_df.copy()
-df_hire["Bulan"] = df_hire["Hire Date"].dt.to_period("M").astype(str)
-hire_per_bulan = df_hire.groupby("Bulan").size()
+# Line chart: jumlah hire per bulan
+st.subheader("🔹 Jumlah Hire per Bulan")
+df["Hire Month"] = df["Hire Date"].dt.to_period("M").astype(str)
+hire_per_bulan = df.groupby("Hire Month").size().sort_index()
 st.line_chart(hire_per_bulan)
 
-st.subheader("🔹 Rata-rata Salary per Bulan Hire Date")
-
-# Bikin kolom bulan
-filtered_df["Bulan Hire"] = filtered_df["Hire Date"].dt.to_period("M").astype(str)
-
-# Hitung rata-rata salary per bulan
-avg_salary_bulan = filtered_df.groupby("Bulan Hire")["Annual Salary (USD)"].mean().sort_index()
-
-# Tampilkan line chart
-st.line_chart(avg_salary_bulan)
-
-
-st.subheader("🔹 Boxplot: Distribusi Salary per Department")
-fig3, ax3 = plt.subplots(figsize=(12, 6))  # lebih lebar
-sns.boxplot(x="Department", y="Annual Salary (USD)", data=filtered_df, ax=ax3, palette="Set3")
-ax3.set_title("Distribusi Salary per Department")
-ax3.set_xticklabels(ax3.get_xticklabels(), rotation=45, ha="right")  # rotasi label department
-st.pyplot(fig3)
-
-# Analisis Salary Class
-st.subheader("🧠 Analisis Salary Class (Low / Medium / High)")
-def classify_salary(salary):
-    if salary < 50000:
-        return "Low"
-    elif salary < 65000:
-        return "Medium"
-    else:
-        return "High"
-
-filtered_df["Salary Class"] = filtered_df["Annual Salary (USD)"].apply(classify_salary)
-st.dataframe(filtered_df[["Employee ID", "Full Name", "Annual Salary (USD)", "Salary Class"]])
-
-# Bonus: ML sederhana
-st.subheader("🤖 Prediksi Salary Class Berdasarkan Department")
-# Encode department
-le = LabelEncoder()
-filtered_df["Dept_Code"] = le.fit_transform(filtered_df["Department"])
-filtered_df["Salary_Class_Num"] = filtered_df["Salary Class"].map({"Low":0, "Medium":1, "High":2})
-
-# ML model
-X = filtered_df[["Dept_Code"]]
-y = filtered_df["Salary_Class_Num"]
-model = LogisticRegression(max_iter=1000)
-model.fit(X, y)
-
-dept_input = st.selectbox("Pilih Department untuk Prediksi", filtered_df["Department"].unique())
-dept_code = le.transform([dept_input])[0]
-pred = model.predict([[dept_code]])
-class_map = {0:"Low", 1:"Medium", 2:"High"}
-st.write(f"Prediksi salary class untuk {dept_input}: {class_map[pred[0]]}")
+# Data table lengkap
+st.subheader("📋 Data Lengkap Karyawan")
+st.dataframe(df)

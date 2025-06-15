@@ -48,20 +48,22 @@ df = df[
     (df["Hire Year"].isin(years))
 ]
 
-# Scorecard
 st.title("📊 HR Dashboard")
 
+# Baris 1
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Karyawan", f"{df.shape[0]}")
-col2.metric("Jumlah Department", f"{df['Department'].nunique()}")
-col3.metric("Total Salary", f"${df['Annual Salary (USD)'].sum():,.0f}")
+col1.metric("👥 Total Karyawan", f"{df.shape[0]}")
+col2.metric("🏢 Jumlah Department", f"{df['Department'].nunique()}")
+col3.metric("💰 Total Salary", f"${df['Annual Salary (USD)'].sum():,.0f}")
 
-col4, col5 = st.columns(2)
-col4.metric("Rata-rata Salary", f"${df['Annual Salary (USD)'].mean():,.2f}")
+# Baris 2
+col4, col5, col6 = st.columns(3)
+col4.metric("📊 Rata-rata Salary", f"${df['Annual Salary (USD)'].mean():,.2f}")
 if not df.empty:
-    col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
+    col5.metric("📅 Newest Hire Year", f"{df['Hire Date'].max().year}")
 else:
-    col5.metric("Newest Hire Year", "-")
+    col5.metric("📅 Newest Hire Year", "-")
+col6.metric("📂 Total Data Aktif", len(df))
 
 # Bar chart: jumlah karyawan per department
 st.subheader("🔹 Jumlah Karyawan per Department")

@@ -10,10 +10,32 @@ def load_data():
 
 df = load_data()
 
-# Filter (opsional bisa dihilangkan kalau mau full data)
+# Filter sidebar
 st.sidebar.header("🔍 Filter Data")
-departments = st.sidebar.multiselect("Pilih Department", options=df["Department"].unique(), default=df["Department"].unique())
-df = df[df["Department"].isin(departments)]
+
+# Filter department
+departments = st.sidebar.multiselect(
+    "Pilih Department", 
+    options=df["Department"].unique(), 
+    default=df["Department"].unique()
+)
+
+# Filter salary
+min_salary = int(df["Annual Salary (USD)"].min())
+max_salary = int(df["Annual Salary (USD)"].max())
+salary_range = st.sidebar.slider(
+    "Pilih Rentang Salary (USD)", 
+    min_salary, 
+    max_salary, 
+    (min_salary, max_salary)
+)
+
+# Apply filters
+df = df[
+    (df["Department"].isin(departments)) &
+    (df["Annual Salary (USD)"] >= salary_range[0]) &
+    (df["Annual Salary (USD)"] <= salary_range[1])
+]
 
 # Scorecard
 st.title("📊 HR Dashboard")

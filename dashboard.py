@@ -31,7 +31,7 @@ years = st.sidebar.multiselect(
     default=sorted(df["Hire Year"].dropna().unique())
 )
 
-# Filter salary (diletakkan setelah tahun hire)
+# Filter salary
 min_salary = int(df["Annual Salary (USD)"].min())
 max_salary = int(df["Annual Salary (USD)"].max())
 salary_range = st.sidebar.slider(
@@ -66,24 +66,43 @@ else:
     col5.metric("📅 Newest Hire Year", "-")
 col6.metric("📂 Total Data Aktif", len(df))
 
-# Bar chart: jumlah karyawan per department
+# Bar chart horizontal: jumlah karyawan per department
 st.subheader("🔹 Jumlah Karyawan per Department")
-dept_count = df["Department"].value_counts()
-st.bar_chart(dept_count)
+dept_count = df["Department"].value_counts().reset_index()
+dept_count.columns = ["Department", "Jumlah Karyawan"]
+
+fig_bar_horizontal = px.bar(
+    dept_count,
+    x="Jumlah Karyawan",
+    y="Department",
+    orientation="h",
+    labels={"Jumlah Karyawan": "Jumlah Karyawan", "Department": "Department"},
+    text="Jumlah Karyawan"
+)
+fig_bar_horizontal.update_layout(yaxis={'categoryorder': 'total ascending'})
+st.plotly_chart(fig_bar_horizontal)
 
 # Bar chart: rata-rata salary per department
 st.subheader("🔹 Rata-rata Salary per Department")
-avg_salary_dept = df.groupby("Department")["Annual Salary (USD)"].mean()
-st.bar_chart(avg_salary_dept)
+avg_salary_dept = df.groupby("Department")["Annual Salary (USD)"].mean().reset_index()
+fig_avg_salary = px.bar(
+    avg_salary_dept,
+    x="Department",
+    y="Annual Salary (USD)",
+    labels={"Annual Salary (USD)": "Rata-rata Salary"},
+    text_auto='.2s'
+)
+st.plotly_chart(fig_avg_salary)
 
 # Pie chart: distribusi karyawan per department
 st.subheader("🔹 Distribusi Karyawan per Department")
 if not dept_count.empty:
     pie_fig = px.pie(
-        names=dept_count.index,
-        values=dept_count.values,
+        dept_count,
+        names="Department",
+        values="Jumlah Karyawan",
         title="Distribusi Karyawan per Department",
-        hole=0.3  # opsional, untuk donut chart
+        hole=0.3
     )
     st.plotly_chart(pie_fig)
 else:
@@ -93,8 +112,15 @@ else:
 st.subheader("🔹 Jumlah Hire per Bulan")
 if not df.empty:
     df["Hire Month"] = df["Hire Date"].dt.to_period("M").astype(str)
-    hire_per_bulan = df.groupby("Hire Month").size().sort_index()
-    st.line_chart(hire_per_bulan)
+    hire_per_bulan = df.groupby("Hire Month").size().reset_index(name="Jumlah")
+    fig_line = px.line(
+        hire_per_bulan,
+        x="Hire Month",
+        y="Jumlah",
+        markers=True,
+        title="Jumlah Hire per Bulan"
+    )
+    st.plotly_chart(fig_line)
 else:
     st.write("Tidak ada data untuk line chart.")
 

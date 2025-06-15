@@ -31,20 +31,21 @@ hire_years = st.sidebar.multiselect(
 )
 
 # Filter salary
-min_salary = int(df["Annual Salary (USD)"].min())
-max_salary = int(df["Annual Salary (USD)"].max())
-salary_range = st.sidebar.slider(
-    "Pilih Rentang Salary (USD)", 
-    min_salary, 
-    max_salary, 
-    (min_salary, max_salary)
-)
+# Slider untuk salary (boleh dipakai bareng atau ganti dengan input_number)
+salary_min = int(df["Annual Salary (USD)"].min())
+salary_max = int(df["Annual Salary (USD)"].max())
+
+st.sidebar.write("Masukkan Rentang Salary (USD):")
+min_salary_input = st.sidebar.number_input("Minimum Salary", min_value=salary_min, max_value=salary_max, value=salary_min, step=1000)
+max_salary_input = st.sidebar.number_input("Maximum Salary", min_value=salary_min, max_value=salary_max, value=salary_max, step=1000)
+
 
 # Apply filters
 df = df[
     (df["Department"].isin(departments)) &
-    (df["Annual Salary (USD)"] >= salary_range[0]) &
-    (df["Annual Salary (USD)"] <= salary_range[1])
+    (df["Annual Salary (USD)"] >= min_salary_input) &
+    (df["Annual Salary (USD)"] <= max_salary_input) &
+    (df["Hire Year"].isin(years))
 ]
 
 # Scorecard

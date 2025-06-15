@@ -73,15 +73,19 @@ hire_per_bulan = df_hire.groupby("Bulan").size()
 st.line_chart(hire_per_bulan)
 
 st.subheader("🔹 Scatter Plot: Salary vs Hire Date")
-fig2, ax2 = plt.subplots()
-ax2.scatter(filtered_df["Hire Date"], filtered_df["Annual Salary (USD)"])
+fig2, ax2 = plt.subplots(figsize=(10, 5))  # kasih ukuran biar lega
+ax2.scatter(filtered_df["Hire Date"], filtered_df["Annual Salary (USD)"], alpha=0.7, color="teal", edgecolors="k")
 ax2.set_xlabel("Hire Date")
 ax2.set_ylabel("Annual Salary (USD)")
+ax2.set_title("Salary vs Hire Date")
+fig2.autofmt_xdate()  # format tanggal biar miring dan terbaca
 st.pyplot(fig2)
 
 st.subheader("🔹 Boxplot: Distribusi Salary per Department")
-fig3, ax3 = plt.subplots(figsize=(10,5))
-sns.boxplot(x="Department", y="Annual Salary (USD)", data=filtered_df, ax=ax3)
+fig3, ax3 = plt.subplots(figsize=(12, 6))  # lebih lebar
+sns.boxplot(x="Department", y="Annual Salary (USD)", data=filtered_df, ax=ax3, palette="Set3")
+ax3.set_title("Distribusi Salary per Department")
+ax3.set_xticklabels(ax3.get_xticklabels(), rotation=45, ha="right")  # rotasi label department
 st.pyplot(fig3)
 
 # Analisis Salary Class

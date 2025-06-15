@@ -75,11 +75,6 @@ st.subheader("🔹 Rata-rata Salary per Department")
 avg_salary_dept = df.groupby("Department")["Annual Salary (USD)"].mean()
 st.bar_chart(avg_salary_dept)
 
-# Bar chart: jumlah karyawan per jabatan
-st.subheader("🔹 Jumlah Karyawan per Jabatan")
-designation_count = df["Designation"].value_counts()
-st.bar_chart(designation_count)
-
 # Pie chart: distribusi karyawan per department
 st.subheader("🔹 Distribusi Karyawan per Department")
 if not dept_count.empty:

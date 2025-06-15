@@ -28,27 +28,9 @@ col4.metric("Rata-rata Salary", f"${df['Annual Salary (USD)'].mean():,.2f}")
 col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
 
 # Bar chart: jumlah karyawan per department
-st.subheader("🔹 Jumlah Karyawan per Jabatan")
-designation_count = df["Designation"].value_counts()
-
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots(figsize=(10, 5))
-ax.bar(designation_count.index, designation_count.values, color="skyblue", edgecolor="black")
-ax.set_xlabel("Designation")
-ax.set_ylabel("Jumlah Karyawan")
-ax.set_title("Jumlah Karyawan per Jabatan")
-plt.xticks(rotation=45, ha='right')  # Biar nama jabatan nggak tabrakan
-st.pyplot(fig)
-
-chart = alt.Chart(designation_count).mark_bar().encode(
-    x=alt.X("Designation", sort="-y"),
-    y="Count",
-    tooltip=["Designation", "Count"]
-).properties(width=700)
-
-st.altair_chart(chart, use_container_width=True)
-
+st.subheader("🔹 Jumlah Karyawan per Department")
+dept_count = df["Department"].value_counts()
+st.bar_chart(dept_count)
 
 # Bar chart: rata-rata salary per department
 st.subheader("🔹 Rata-rata Salary per Department")
@@ -56,21 +38,9 @@ avg_salary_dept = df.groupby("Department")["Annual Salary (USD)"].mean()
 st.bar_chart(avg_salary_dept)
 
 # Bar chart: jumlah karyawan per jabatan
-st.subheader("🔹 Jumlah Karyawan per Department")
-
-# Hitung jumlah karyawan per dept
-dept_count = df["Department"].value_counts()
-
-# Bikin bar chart
-fig, ax = plt.subplots(figsize=(8, 5))
-ax.bar(dept_count.index, dept_count.values, color="skyblue", edgecolor="black")
-ax.set_xlabel("Department")
-ax.set_ylabel("Jumlah Karyawan")
-ax.set_title("Jumlah Karyawan per Department")
-plt.xticks(rotation=45, ha='right')  # Biar label dept miring dikit biar muat
-
-st.pyplot(fig)
-
+st.subheader("🔹 Jumlah Karyawan per Jabatan")
+designation_count = df["Designation"].value_counts()
+st.bar_chart(designation_count)
 
 # Pie chart: distribusi karyawan per department
 st.subheader("🔹 Distribusi Karyawan per Department")

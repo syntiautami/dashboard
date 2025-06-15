@@ -10,41 +10,41 @@ def load_data():
 
 df = load_data()
 
-#kolom baru untuk hire year
+# Bikin kolom Hire Year
 df["Hire Year"] = df["Hire Date"].dt.year
 
-# Filter sidebar
+# Sidebar filter
 st.sidebar.header("🔍 Filter Data")
 
 # Filter department
 departments = st.sidebar.multiselect(
-    "Pilih Department", 
-    options=df["Department"].unique(), 
+    "Pilih Department",
+    options=df["Department"].unique(),
     default=df["Department"].unique()
 )
 
-#Filter hire year
-hire_years = st.sidebar.multiselect(
-    "Pilih Hire Year", 
-    options=df["Hire Year"].unique(), 
-    default=df["Hire Year"].unique()
+# Filter salary range
+min_salary = int(df["Annual Salary (USD)"].min())
+max_salary = int(df["Annual Salary (USD)"].max())
+salary_range = st.sidebar.slider(
+    "Pilih Rentang Salary (USD)",
+    min_value=min_salary,
+    max_value=max_salary,
+    value=(min_salary, max_salary)
 )
 
-# Filter salary
-# Slider untuk salary (boleh dipakai bareng atau ganti dengan input_number)
-salary_min = int(df["Annual Salary (USD)"].min())
-salary_max = int(df["Annual Salary (USD)"].max())
+# Filter tahun hire
+years = st.sidebar.multiselect(
+    "Pilih Tahun Hire",
+    options=sorted(df["Hire Year"].dropna().unique()),
+    default=sorted(df["Hire Year"].dropna().unique())
+)
 
-st.sidebar.write("Masukkan Rentang Salary (USD):")
-min_salary_input = st.sidebar.number_input("Minimum Salary", min_value=salary_min, max_value=salary_max, value=salary_min, step=1000)
-max_salary_input = st.sidebar.number_input("Maximum Salary", min_value=salary_min, max_value=salary_max, value=salary_max, step=1000)
-
-
-# Apply filters
+# Terapkan filter
 df = df[
     (df["Department"].isin(departments)) &
-    (df["Annual Salary (USD)"] >= min_salary_input) &
-    (df["Annual Salary (USD)"] <= max_salary_input) &
+    (df["Annual Salary (USD)"] >= salary_range[0]) &
+    (df["Annual Salary (USD)"] <= salary_range[1]) &
     (df["Hire Year"].isin(years))
 ]
 
@@ -58,7 +58,10 @@ col3.metric("Total Salary", f"${df['Annual Salary (USD)'].sum():,.0f}")
 
 col4, col5 = st.columns(2)
 col4.metric("Rata-rata Salary", f"${df['Annual Salary (USD)'].mean():,.2f}")
-col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
+if not df.empty:
+    col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
+else:
+    col5.metric("Newest Hire Year", "-")
 
 # Bar chart: jumlah karyawan per department
 st.subheader("🔹 Jumlah Karyawan per Department")
@@ -77,16 +80,22 @@ st.bar_chart(designation_count)
 
 # Pie chart: distribusi karyawan per department
 st.subheader("🔹 Distribusi Karyawan per Department")
-fig1, ax1 = plt.subplots()
-ax1.pie(dept_count, labels=dept_count.index, autopct='%1.1f%%', startangle=90)
-ax1.axis('equal')
-st.pyplot(fig1)
+if not dept_count.empty:
+    fig1, ax1 = plt.subplots()
+    ax1.pie(dept_count, labels=dept_count.index, autopct='%1.1f%%', startangle=90)
+    ax1.axis('equal')
+    st.pyplot(fig1)
+else:
+    st.write("Tidak ada data untuk pie chart.")
 
 # Line chart: jumlah hire per bulan
 st.subheader("🔹 Jumlah Hire per Bulan")
-df["Hire Month"] = df["Hire Date"].dt.to_period("M").astype(str)
-hire_per_bulan = df.groupby("Hire Month").size().sort_index()
-st.line_chart(hire_per_bulan)
+if not df.empty:
+    df["Hire Month"] = df["Hire Date"].dt.to_period("M").astype(str)
+    hire_per_bulan = df.groupby("Hire Month").size().sort_index()
+    st.line_chart(hire_per_bulan)
+else:
+    st.write("Tidak ada data untuk line chart.")
 
 # Data table lengkap
 st.subheader("📋 Data Lengkap Karyawan")

@@ -10,7 +10,7 @@ def load_data():
 
 df = load_data()
 
-# Bikin kolom Hire Year
+# Tambah kolom tahun hire
 df["Hire Year"] = df["Hire Date"].dt.year
 
 # Sidebar filter
@@ -23,7 +23,14 @@ departments = st.sidebar.multiselect(
     default=df["Department"].unique()
 )
 
-# Filter salary range
+# Filter tahun hire
+years = st.sidebar.multiselect(
+    "Pilih Tahun Hire",
+    options=sorted(df["Hire Year"].dropna().unique()),
+    default=sorted(df["Hire Year"].dropna().unique())
+)
+
+# Filter salary (diletakkan setelah tahun hire)
 min_salary = int(df["Annual Salary (USD)"].min())
 max_salary = int(df["Annual Salary (USD)"].max())
 salary_range = st.sidebar.slider(
@@ -33,19 +40,12 @@ salary_range = st.sidebar.slider(
     value=(min_salary, max_salary)
 )
 
-# Filter tahun hire
-years = st.sidebar.multiselect(
-    "Pilih Tahun Hire",
-    options=sorted(df["Hire Year"].dropna().unique()),
-    default=sorted(df["Hire Year"].dropna().unique())
-)
-
 # Terapkan filter
 df = df[
     (df["Department"].isin(departments)) &
+    (df["Hire Year"].isin(years)) &
     (df["Annual Salary (USD)"] >= salary_range[0]) &
-    (df["Annual Salary (USD)"] <= salary_range[1]) &
-    (df["Hire Year"].isin(years))
+    (df["Annual Salary (USD)"] <= salary_range[1])
 ]
 
 st.title("📊 HR Dashboard")

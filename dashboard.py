@@ -38,12 +38,21 @@ avg_salary_dept = df.groupby("Department")["Annual Salary (USD)"].mean()
 st.bar_chart(avg_salary_dept)
 
 # Bar chart: jumlah karyawan per jabatan
-st.subheader("🔹 Jumlah Karyawan per Jabatan")
-designation_count = df["Designation"].value_counts().reset_index()
-designation_count.columns = ["Designation", "Jumlah Karyawan"]
-designation_count = designation_count.set_index("Designation")
+st.subheader("🔹 Jumlah Karyawan per Department")
 
-st.bar_chart(designation_count)
+# Hitung jumlah karyawan per dept
+dept_count = df["Department"].value_counts()
+
+# Bikin bar chart
+fig, ax = plt.subplots(figsize=(8, 5))
+ax.bar(dept_count.index, dept_count.values, color="skyblue", edgecolor="black")
+ax.set_xlabel("Department")
+ax.set_ylabel("Jumlah Karyawan")
+ax.set_title("Jumlah Karyawan per Department")
+plt.xticks(rotation=45, ha='right')  # Biar label dept miring dikit biar muat
+
+st.pyplot(fig)
+
 
 # Pie chart: distribusi karyawan per department
 st.subheader("🔹 Distribusi Karyawan per Department")

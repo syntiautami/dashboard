@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import altair as alt
 
 # Load data
 @st.cache_data
@@ -29,8 +30,17 @@ col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
 
 # Bar chart: jumlah karyawan per department
 st.subheader("🔹 Jumlah Karyawan per Jabatan")
-designation_count = df["Designation"].value_counts()
-st.bar_chart(designation_count)
+designation_count = df["Designation"].value_counts().reset_index()
+designation_count.columns = ["Designation", "Count"]
+
+chart = alt.Chart(designation_count).mark_bar().encode(
+    x=alt.X("Designation", sort="-y"),
+    y="Count",
+    tooltip=["Designation", "Count"]
+).properties(width=700)
+
+st.altair_chart(chart, use_container_width=True)
+
 
 # Bar chart: rata-rata salary per department
 st.subheader("🔹 Rata-rata Salary per Department")

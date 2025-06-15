@@ -10,6 +10,9 @@ def load_data():
 
 df = load_data()
 
+#kolom baru untuk hire year
+df["Hire Year"] = df["Hire Date"].dt.year
+
 # Filter sidebar
 st.sidebar.header("🔍 Filter Data")
 
@@ -18,6 +21,13 @@ departments = st.sidebar.multiselect(
     "Pilih Department", 
     options=df["Department"].unique(), 
     default=df["Department"].unique()
+)
+
+#Filter hire year
+hire_years = st.sidebar.multiselect(
+    "Pilih Hire Year", 
+    options=df["Hire Year"].unique(), 
+    default=df["Hire Year"].unique()
 )
 
 # Filter salary

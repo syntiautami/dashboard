@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import altair as alt
 
 # Load data
 @st.cache_data
@@ -30,8 +29,17 @@ col5.metric("Newest Hire Year", f"{df['Hire Date'].max().year}")
 
 # Bar chart: jumlah karyawan per department
 st.subheader("🔹 Jumlah Karyawan per Jabatan")
-designation_count = df["Designation"].value_counts().reset_index()
-designation_count.columns = ["Designation", "Count"]
+designation_count = df["Designation"].value_counts()
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.bar(designation_count.index, designation_count.values, color="skyblue", edgecolor="black")
+ax.set_xlabel("Designation")
+ax.set_ylabel("Jumlah Karyawan")
+ax.set_title("Jumlah Karyawan per Jabatan")
+plt.xticks(rotation=45, ha='right')  # Biar nama jabatan nggak tabrakan
+st.pyplot(fig)
 
 chart = alt.Chart(designation_count).mark_bar().encode(
     x=alt.X("Designation", sort="-y"),

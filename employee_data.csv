@@ -1,0 +1,201 @@
+Employee ID,Full Name,Department,Designation,Hire Date,Annual Salary (USD)
+S1001,John Smith,Human Resources,HR Manager,15/05/2023,60000
+S1002,Jane Doe,Marketing,Marketing Specialist,20/08/2023,50000
+S1003,Michael Johnson,Finance,Financial Analyst,10/10/2023,55000
+S1004,Emily Brown,Sales,Sales Representative,25/03/2023,48000
+S1005,David Wilson,Information Technology,IT Specialist,12/09/2023,60000
+S1006,Lisa Taylor,Operations,Operations Manager,30/06/2023,65000
+S1007,Daniel Martinez,Customer Service,Customer Service Representative,05/11/2023,45000
+S1008,Sarah Anderson,Research and Development,R&D Engineer,18/04/2023,58000
+S1009,Christopher Thomas,Production,Production Supervisor,22/07/2023,52000
+S1010,Kimberly Garcia,Quality Assurance,QA Analyst,14/02/2023,56000
+S1011,William Hernandez,Human Resources,HR Coordinator,01/09/2023,48000
+S1012,Melissa Lopez,Marketing,Marketing Manager,10/06/2023,65000
+S1013,Richard Perez,Finance,Finance Manager,18/11/2023,70000
+S1014,Jessica Gonzalez,Sales,Sales Manager,03/05/2023,72000
+S1015,Matthew Wilson,Information Technology,IT Manager,08/08/2023,75000
+S1016,Amanda Martinez,Operations,Operations Coordinator,29/10/2023,48000
+S1017,James Johnson,Customer Service,Customer Service Manager,12/03/2023,68000
+S1018,Laura Brown,Research and Development,R&D Manager,25/06/2023,70000
+S1019,Daniel Smith,Production,Production Manager,30/09/2023,72000
+S1020,Jennifer Davis,Quality Assurance,QA Manager,17/01/2023,75000
+S1021,Michael Garcia,Human Resources,HR Assistant,05/07/2023,42000
+S1022,Amy Hernandez,Marketing,Marketing Coordinator,28/04/2023,48000
+S1023,Christopher Rodriguez,Finance,Senior Financial Analyst,12/11/2023,60000
+S1024,Jessica Martinez,Sales,Senior Sales Representative,25/05/2023,55000
+S1025,David Wilson,Information Technology,Senior IT Specialist,30/08/2023,70000
+S1026,Sarah Smith,Operations,Assistant Operations Manager,15/10/2023,55000
+S1027,Matthew Johnson,Customer Service,Senior Customer Service Representative,28/03/2023,50000
+S1028,Emily Davis,Research and Development,R&D Technician,01/06/2023,48000
+S1029,Daniel Wilson,Production,Senior Production Supervisor,08/09/2023,60000
+S1030,Jennifer Martinez,Quality Assurance,Senior QA Analyst,22/02/2023,62000
+S1031,Michael Smith,Human Resources,HR Generalist,17/07/2023,50000
+S1032,Jessica Johnson,Marketing,Marketing Assistant,10/04/2023,42000
+S1033,David Brown,Finance,Junior Financial Analyst,26/11/2023,48000
+S1034,Sarah Garcia,Sales,Sales Coordinator,17/06/2023,50000
+S1035,Matthew Hernandez,Information Technology,Junior IT Specialist,20/09/2023,48000
+S1036,Emily Rodriguez,Operations,Operations Assistant,03/12/2023,42000
+S1037,Daniel Davis,Customer Service,Customer Service Associate,06/04/2023,40000
+S1038,Jennifer Smith,Research and Development,R&D Assistant,30/07/2023,42000
+S1039,Michael Johnson,Production,Production Assistant,25/10/2023,40000
+S1040,Jessica Martinez,Quality Assurance,QA Assistant,20/03/2023,42000
+S1041,Shine Muntaz,Quality Assurance,QA Assistant,21/03/2023,42000
+S1042,Darwin Syah,Research and Development,R&D Technician,02/07/2023,48000
+S1043,Charles Edwin,Quality Assurance,Senior QA Analyst,21/02/2023,62000
+S1044,James Hardy,Marketing,Marketing Specialist,19/08/2023,50000
+S1045,Ameena Syahzain,Marketing,Marketing Manager,20/06/2023,65000
+S1046,Amanda Rossa,Sales,Senior Sales Representative,25/05/2023,55000
+S1047,Syahrial Khan,Finance,Senior Financial Analyst,09/11/2023,62000
+S1048,Maryam Ghof,Sales,Senior Sales Representative,30/05/2023,55000
+S1049,Smith Harden,Human Resources,HR Generalist,10/07/2023,55000
+S1050,Ghazali Arta,Human Resources,HR Generalist,19/07/2023,50000
+S1051,Aliyah Khan,Operations,Assistant Operations Manager,01/01/2022,52000
+S1052,John Carter,Finance,Junior Financial Analyst,12/02/2022,45000
+S1053,Susan Lee,Marketing,Marketing Assistant,15/03/2022,43000
+S1054,Robert Brown,Production,Production Supervisor,17/04/2022,57000
+S1055,James Walker,Sales,Senior Sales Representative,20/05/2022,60000
+S1056,Amy Clark,Information Technology,Senior IT Specialist,21/06/2022,72000
+S1057,David Wright,Customer Service,Customer Service Representative,25/07/2022,48000
+S1058,Emily Lewis,Research and Development,R&D Manager,30/08/2022,80000
+S1059,Michael Scott,Quality Assurance,QA Analyst,05/09/2022,55000
+S1060,Lisa Davis,Human Resources,HR Coordinator,10/10/2022,60000
+S1061,William Jones,Marketing,Marketing Specialist,15/11/2022,53000
+S1062,Matthew White,Production,Production Assistant,20/12/2022,45000
+S1063,Charlotte Harris,Sales,Sales Coordinator,15/01/2022,52000
+S1064,Daniel Moore,Customer Service,Senior Customer Service Representative,28/02/2022,55000
+S1065,Katherine Green,Research and Development,R&D Technician,02/03/2022,46000
+S1066,Thomas Young,Finance,Senior Financial Analyst,07/04/2022,65000
+S1067,Jessica Thompson,Information Technology,Junior IT Specialist,25/05/2022,48000
+S1068,James Hill,Operations,Operations Manager,01/06/2022,70000
+S1069,Susan Martinez,Marketing,Marketing Coordinator,08/07/2022,51000
+S1070,David King,Human Resources,HR Assistant,12/08/2022,45000
+S1071,Lily Harris,Quality Assurance,Senior QA Analyst,15/09/2022,62000
+S1072,Charles White,Finance,Junior Financial Analyst,20/10/2022,47000
+S1073,Maria Walker,Production,Senior Production Supervisor,25/11/2022,68000
+S1074,Henry Allen,Research and Development,R&D Engineer,30/12/2022,60000
+S1075,Jessica Clark,Customer Service,Customer Service Manager,15/01/2022,65000
+S1076,David Carter,Operations,Operations Specialist,20/02/2022,53000
+S1077,Victoria King,Sales,Sales Representative,25/03/2022,51000
+S1078,Robert Wilson,Marketing,Marketing Manager,01/04/2022,75000
+S1079,Susan Turner,Finance,Senior Financial Analyst,10/05/2022,67000
+S1080,Michael Lopez,Quality Assurance,QA Manager,15/06/2022,70000
+S1081,Emily Adams,Human Resources,HR Generalist,20/07/2022,49000
+S1082,Liam Walker,Production,Production Specialist,28/08/2022,52000
+S1083,Olivia White,Customer Service,Customer Service Associate,05/09/2022,42000
+S1084,James Walker,Information Technology,IT Manager,10/10/2022,85000
+S1085,Charlotte Scott,Operations,Operations Coordinator,15/11/2022,60000
+S1086,Grace Green,Research and Development,R&D Assistant,20/12/2022,48000
+S1087,Daniel White,Sales,Sales Coordinator,01/01/2023,54000
+S1088,Joshua Harris,Finance,Finance Manager,15/02/2023,75000
+S1089,Lily Brown,Quality Assurance,Senior QA Analyst,20/03/2023,67000
+S1090,Chris Lewis,Human Resources,HR Manager,25/04/2023,85000
+S1091,Olivia Clark,Production,Production Coordinator,01/05/2023,58000
+S1092,Mark Thomas,Sales,Senior Sales Representative,10/06/2023,69000
+S1093,Daniel Harris,Marketing,Senior Marketing Manager,15/07/2023,76000
+S1094,Emily White,Operations,Operations Assistant,25/08/2023,47000
+S1095,Daniel Scott,Finance,Senior Financial Analyst,01/09/2023,72000
+S1096,Sophie Adams,Research and Development,R&D Engineer,10/10/2023,78000
+S1097,Chris Davis,Customer Service,Senior Customer Service Representative,15/11/2023,53000
+S1098,Katherine Lee,Information Technology,IT Coordinator,20/12/2023,75000
+S1099,Matthew Green,Sales,Sales Representative,25/01/2023,46000
+S1100,Rebecca Harris,Human Resources,HR Assistant,15/02/2023,48000
+S1101,Paul Morgan,Marketing,Marketing Director,01/03/2023,95000
+S1102,John Adams,Production,Senior Production Specialist,15/04/2023,67000
+S1103,Jane Harris,Sales,Sales Director,01/05/2023,90000
+S1104,David Green,Customer Service,Customer Service Specialist,15/06/2023,54000
+S1105,Emily Jackson,Research and Development,R&D Supervisor,01/07/2023,80000
+S1106,Mark Wilson,Finance,Financial Analyst,15/08/2023,59000
+S1107,Olivia Thomas,Operations,Senior Operations Manager,01/09/2023,80000
+S1108,James Scott,Information Technology,Senior IT Specialist,15/10/2023,72000
+S1109,Katherine White,Human Resources,HR Specialist,01/11/2023,63000
+S1110,John Miller,Sales,Sales Coordinator,15/12/2023,53000
+S1111,Jessica Anderson,Marketing,Senior Marketing Coordinator,01/01/2023,75000
+S1112,David Lopez,Production,Production Specialist,15/02/2023,54000
+S1113,Sarah Green,Customer Service,Customer Service Representative,01/03/2023,48000
+S1114,Chris Martin,Finance,Senior Financial Analyst,15/04/2023,67000
+S1115,Olivia Young,Research and Development,R&D Engineer,01/05/2023,78000
+S1116,Daniel Adams,Operations,Operations Specialist,15/06/2023,51000
+S1117,Michael Lee,Sales,Senior Sales Representative,01/07/2023,69000
+S1118,Emily Carter,Information Technology,IT Technician,15/08/2023,46000
+S1119,Olivia Wilson,Customer Service,Senior Customer Service Associate,01/09/2023,55000
+S1120,James Thomas,Human Resources,HR Assistant,15/10/2023,48000
+S1121,Katherine White,Marketing,Senior Marketing Specialist,01/11/2023,70000
+S1122,David Brown,Production,Production Supervisor,15/12/2023,62000
+S1123,Emily Harris,Sales,Sales Representative,01/01/2022,53000
+S1124,John Smith,Customer Service,Customer Service Manager,15/02/2022,60000
+S1125,Olivia Martin,Finance,Financial Analyst,01/03/2022,56000
+S1126,Mark White,Operations,Senior Operations Manager,15/04/2022,72000
+S1127,Emily Young,Information Technology,IT Manager,01/05/2022,80000
+S1128,Chris Wilson,Customer Service,Customer Service Supervisor,15/06/2022,59000
+S1129,Daniel Martin,Sales,Sales Manager,01/07/2022,75000
+S1130,Katherine Green,Marketing,Marketing Coordinator,15/08/2022,66000
+S1131,James White,Finance,Senior Financial Analyst,01/09/2022,70000
+S1132,Olivia Scott,Operations,Operations Manager,15/10/2022,80000
+S1133,Emily Brown,Research and Development,R&D Assistant,01/11/2022,49000
+S1134,Chris Green,Information Technology,Senior IT Manager,15/12/2022,95000
+S1135,David White,Production,Production Manager,01/01/2022,85000
+S1136,Olivia Brown,Customer Service,Customer Service Representative,15/02/2022,52000
+S1137,Michael White,Finance,Financial Analyst,01/03/2022,59000
+S1138,Daniel Harris,Operations,Operations Assistant,15/04/2022,46000
+S1139,Katherine Scott,Research and Development,R&D Supervisor,01/05/2022,78000
+S1140,John Young,Sales,Senior Sales Specialist,15/06/2022,73000
+S1141,Emily White,Marketing,Marketing Assistant,01/07/2022,47000
+S1142,Chris Scott,Customer Service,Senior Customer Service Specialist,15/08/2022,57000
+S1143,Olivia White,Production,Production Coordinator,01/09/2022,62000
+S1144,Daniel Green,Finance,Finance Coordinator,15/10/2022,66000
+S1145,Emily Scott,Operations,Senior Operations Manager,01/11/2022,77000
+S1146,John Wilson,Information Technology,IT Coordinator,15/12/2022,82000
+S1147,Chris Young,Customer Service,Senior Customer Service Associate,01/01/2022,54000
+S1148,Olivia Thomas,Marketing,Senior Marketing Director,15/02/2022,95000
+S1149,David Martin,Production,Senior Production Manager,01/03/2022,86000
+S1150,Paul Morgan,Marketing,Marketing Director,01/04/2022,95000
+S1151,George Wilson,Human Resources,HR Manager,01/05/2022,92000
+S1152,Emma Thomas,Marketing,Marketing Executive,15/06/2022,68000
+S1153,Daniel Harris,Finance,Junior Financial Analyst,01/07/2022,46000
+S1154,Jessica Taylor,Production,Senior Production Supervisor,15/08/2022,67000
+S1155,Michael Brown,Sales,Sales Manager,01/09/2022,85000
+S1156,Lily Johnson,Customer Service,Customer Service Representative,15/10/2022,48000
+S1157,David Anderson,Research and Development,R&D Engineer,01/11/2022,76000
+S1158,Amy Walker,Operations,Senior Operations Coordinator,15/12/2022,78000
+S1159,James Davis,Finance,Financial Manager,01/01/2023,95000
+S1160,Charlotte Brown,Information Technology,IT Manager,15/02/2023,88000
+S1161,Oliver Wilson,Sales,Senior Sales Representative,01/03/2023,75000
+S1162,Lisa Lee,Marketing,Senior Marketing Specialist,15/04/2023,70000
+S1163,Daniel Young,Customer Service,Senior Customer Service Manager,01/05/2023,76000
+S1164,Rebecca Harris,Research and Development,R&D Specialist,15/06/2023,71000
+S1165,George Clark,Production,Production Coordinator,01/07/2023,65000
+S1166,Emily Smith,Operations,Senior Operations Analyst,15/08/2023,69000
+S1167,William Thompson,Finance,Financial Analyst,01/09/2023,60000
+S1168,Amy Harris,Marketing,Marketing Assistant,15/10/2023,48000
+S1169,David Green,Information Technology,IT Specialist,01/11/2023,65000
+S1170,John White,Sales,Sales Specialist,15/12/2023,58000
+S1171,Grace Johnson,Customer Service,Customer Service Representative,01/01/2023,51000
+S1172,Matthew Brown,Operations,Operations Coordinator,15/02/2023,67000
+S1173,Sarah Clark,Finance,Junior Financial Analyst,01/03/2023,50000
+S1174,Daniel Walker,Research and Development,R&D Manager,15/04/2023,78000
+S1175,Jessica Martinez,Sales,Senior Sales Coordinator,01/05/2023,80000
+S1176,Liam Taylor,Customer Service,Senior Customer Service Associate,15/06/2023,59000
+S1177,Henry Johnson,Production,Production Assistant,01/07/2023,48000
+S1178,Olivia Smith,Human Resources,HR Specialist,15/08/2023,67000
+S1179,Matthew Thomas,Marketing,Marketing Director,01/09/2023,95000
+S1180,Charlotte White,Operations,Operations Supervisor,15/10/2023,70000
+S1181,Oliver Brown,Finance,Finance Coordinator,01/11/2023,63000
+S1182,Susan Harris,Customer Service,Customer Service Manager,15/12/2023,70000
+S1183,David Martinez,Research and Development,R&D Technician,01/01/2022,52000
+S1184,Emily Wilson,Information Technology,IT Manager,15/02/2022,86000
+S1185,James Lee,Sales,Sales Executive,01/03/2022,62000
+S1186,Rebecca Brown,Marketing,Marketing Specialist,15/04/2022,55000
+S1187,John Smith,Operations,Senior Operations Manager,01/05/2022,80000
+S1188,Matthew Green,Finance,Senior Financial Analyst,15/06/2022,75000
+S1189,Sarah White,Customer Service,Senior Customer Service Specialist,01/07/2022,62000
+S1190,Grace Taylor,Production,Senior Production Supervisor,15/08/2022,73000
+S1191,William Brown,Human Resources,HR Generalist,01/09/2022,55000
+S1192,Amy Wilson,Sales,Senior Sales Representative,15/10/2022,69000
+S1193,Jessica Green,Research and Development,R&D Specialist,01/11/2022,77000
+S1194,John Johnson,Customer Service,Customer Service Associate,15/12/2022,52000
+S1195,David Harris,Operations,Operations Analyst,01/01/2022,65000
+S1196,Charlotte Young,Finance,Junior Financial Analyst,15/02/2022,47000
+S1197,Olivia Martinez,Production,Production Manager,01/03/2022,85000
+S1198,Matthew Harris,Sales,Sales Representative,15/04/2022,55000
+S1199,Emily Brown,Customer Service,Customer Service Manager,01/05/2022,67000
+S1200,George White,Research and Development,R&D Manager,15/06/2022,82000
